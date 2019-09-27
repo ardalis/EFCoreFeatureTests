@@ -6,18 +6,8 @@ namespace EFCoreFeatureTests
 {
     public class SeparateEntityIdsWorkProperly
     {
-        //[Fact]
-        //public void Test1()
-        //{
-        //    var dbContext = new AppDbContext(DbConfig.CreateNewContextOptions());
-
-        //    var item1 = new Item() { Name = "Steve" };
-
-        //    dbContext.Items.Add(item1);
-        //    Assert.Equal(1, item1.Id);
-        //}
-
         [Fact]
+        // See: https://github.com/aspnet/EntityFrameworkCore/issues/4096
         public void ShowFailureInPre30EFCore()
         {
             var db1 = GetMyDb();

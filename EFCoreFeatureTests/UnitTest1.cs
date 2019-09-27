@@ -44,9 +44,8 @@ namespace EFCoreFeatureTests
     }
     public class Tests
     {
-
-
         [Fact]
+        // See: https://github.com/aspnet/EntityFrameworkCore/issues/6872
         public void Test1()
         {
             // create a brand new dbContext
