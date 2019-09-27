@@ -89,18 +89,18 @@ namespace EFCoreFeatureTests
             // ID should be 1
             Assert.Equal(1, item.Id);
 
-            //dbContext.ResetValueGenerators();
+            // dbContext.ResetValueGenerators(); // blows up in 2.2.6
             dbContext.Database.EnsureDeleted();
 
             Assert.False(dbContext.Items.Any());
 
-            // This will fail in EFCore 2.2.6 and 3.0.0
+            // This will fail in and 3.0.0
             // Makes no difference if ResetValueGenerators() is called
             var item2 = new Item();
             dbContext.Items.Add(item2); // InvalidOperation - Id with value 1 is already being tracked
             dbContext.SaveChanges();
 
-            // ID should STILL be 1
+            // ID should STILL be 1; it's 2 in 2.2.6 without running ResetValueGenerators
             Assert.Equal(1, item2.Id);
 
         }
